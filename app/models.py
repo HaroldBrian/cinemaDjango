@@ -16,7 +16,7 @@ class Movie(models.Model):
     release_date = models.DateField()
     rating = models.FloatField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    staus = models.CharField(max_length=20, choices=[('draft', 'Draft'), ('published', 'Published'), ('archived', 'Archived')], default='draft')
+    status = models.CharField(max_length=20, choices=[('draft', 'Draft'), ('published', 'Published'), ('archived', 'Archived')], default='draft')
 
     def __str__(self):
         return self.title

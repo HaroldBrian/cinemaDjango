@@ -5,12 +5,15 @@ from app.models import Author, Movie
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
-        fields = ['name', 'email', 'birth_date']
+        fields = ['id', 'name', 'email', 'birth_date']
         
 # Serializer for Movie model
 class MovieSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
+    author_id = serializers.PrimaryKeyRelatedField(
+        queryset=Author.objects.all(), write_only=True, source='author'
+    )
     
     class Meta:
         model = Movie
-        fields = ['title', 'description', 'release_date', 'rating', 'author', 'status']
+        fields = ['id', 'title', 'description', 'release_date', 'rating', 'author', 'author_id', 'status']

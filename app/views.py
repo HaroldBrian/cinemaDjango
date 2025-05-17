@@ -41,7 +41,7 @@ class MovieViewSet(viewsets.ModelViewSet):
         # Example: /api/movies/?status=published
         status_filter = self.request.query_params.get('status')
         if status_filter:
-            queryset = queryset.filter(staus=status_filter)
+            queryset = queryset.filter(status=status_filter)
         return queryset
     
     @action(detail=True, methods=['post'])
