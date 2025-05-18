@@ -38,9 +38,26 @@ class StatusFilter(admin.SimpleListFilter):
             return queryset.filter(status=self.value())
         return queryset
 
+class HasMoviesFilter(admin.SimpleListFilter):
+    title = "Author with Movies"
+    parameter_name = "has_movies"
+
+    def lookups(self, request, model_admin):
+        return [
+            ('yes', "With a least one movies"),
+            ('no', "Without movies"),
+        ]
+
+    def queryset(self, request, queryset):
+        if self.value() == 'yes':
+            return queryset.filter(movie__isnull=False).distinct()
+        if self.value() == 'no':
+            return queryset.filter(movie__isnull=True)
+        return queryset
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'birth_date']
     inlines = [MovieInline]
+    list_filter = [HasMoviesFilter]
 
 class MovieAdmin(admin.ModelAdmin):
     list_filter = ['release_date', RatingFilter, StatusFilter]
