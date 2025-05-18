@@ -1,6 +1,13 @@
 from django.contrib import admin
 from .models import Author, Movie
 
+class MovieInline(admin.TabularInline):
+    model = Movie
+    extra = 0
+    readonly_fields = ['title', 'description', 'release_date', 'rating', 'status']
+    can_delete = False
+    show_change_link = True
+
 class RatingFilter(admin.SimpleListFilter):
     title = 'Évaluation'
     parameter_name = 'rating'
@@ -31,9 +38,13 @@ class StatusFilter(admin.SimpleListFilter):
             return queryset.filter(status=self.value())
         return queryset
 
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'birth_date']
+    inlines = [MovieInline]
+
 class MovieAdmin(admin.ModelAdmin):
     list_filter = ['release_date', RatingFilter, StatusFilter]
     list_display = ['title', 'description', 'release_date', 'rating', 'author', 'status']
 
-admin.site.register(Author)
+admin.site.register(Author, AuthorAdmin)
 admin.site.register(Movie, MovieAdmin)
