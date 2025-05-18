@@ -39,12 +39,12 @@ class StatusFilter(admin.SimpleListFilter):
         return queryset
 
 class HasMoviesFilter(admin.SimpleListFilter):
-    title = "Author with Movies"
+    title = "Author with Movie"
     parameter_name = "has_movies"
 
     def lookups(self, request, model_admin):
         return [
-            ('yes', "With a least one movies"),
+            ('yes', "With a least one movie"),
             ('no', "Without movies"),
         ]
 
