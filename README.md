@@ -1,4 +1,4 @@
-# Projet Cinema
+## Project Cinema
 
 _Version_ : 1.0
 _Last update_ : 19 Mai 2025
@@ -6,7 +6,7 @@ _By_ : FOTSEU CHEDJOU HAROLD BRIAN
 
 ---
 
-# Cinema Project
+# description
 
 This project is a Django REST API for managing authors and movies, with interactive documentation via Swagger.
 
@@ -40,7 +40,7 @@ This project is a Django REST API for managing authors and movies, with interact
    - API: [http://localhost:8000/api/](http://localhost:8000/api/)
    - Swagger: [http://localhost:8000/swagger/](http://localhost:8000/swagger/)
    - Redoc: [http://localhost:8000/redoc/](http://localhost:8000/redoc/)
-   - Token authentication: [http://localhost:8000/api-token-auth/](http://localhost:8000/api-token-auth/)
+   - Token authentication: [http://localhost:8000/token/](http://localhost:8000/token/)
 
 ## Available Endpoints
 
@@ -56,10 +56,12 @@ This project is a Django REST API for managing authors and movies, with interact
 | GET    | /api/movies/{id}/  | Get details of a movie         |
 | PUT    | /api/movies/{id}/  | Update a movie                 |
 | DELETE | /api/movies/{id}/  | Delete a movie                 |
-| POST   | /api-token-auth/   | Obtain an authentication token |
+| POST   | /token/            | Obtain an authentication token |
 
 **Note:**  
 The complete and interactive documentation of the endpoints is available at `/swagger/` and `/redoc/`.
+
+# description en Français
 
 Ce projet est une API Django REST permettant de gérer des auteurs et des films, avec documentation interactive via Swagger.
 
