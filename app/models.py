@@ -11,12 +11,17 @@ class Author(models.Model):
     
 # Class representing a Movie
 class Movie(models.Model):
+    STATUS_CHOICES = [
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+        ('archived', 'Archived'),
+    ]
     title = models.CharField(max_length=100)
     description = models.TextField()
     release_date = models.DateField()
-    rating = models.IntegerField(choices=[(i, str(i)) for i in range(1, 5)], default=5)
+    rating = models.IntegerField(choices=[(i, str(i)) for i in range(1, 6)])
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    status = models.CharField(max_length=20, choices=[('draft', 'Draft'), ('published', 'Published'), ('archived', 'Archived')], default='draft')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft')
 
     def __str__(self):
         return self.title
