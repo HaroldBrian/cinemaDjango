@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'app',
-    'drf_yasg'
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +143,5 @@ REST_FRAMEWORK = {
     ),
     'EXCEPTION_HANDLER': 'app.utils.custom_exception_handler',
 }
+
+SWAGGER_USE_COMPAT_RENDERERS = False
