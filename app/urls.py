@@ -11,5 +11,5 @@ router.register(r'movies', MovieViewSet)
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('api/v1/', include(router.urls)),
 ]
