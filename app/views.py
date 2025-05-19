@@ -64,22 +64,22 @@ class MovieViewSet(viewsets.ModelViewSet):
         data['message'] = 'Movie archived successfully.'
         return Response(data, status=status.HTTP_200_OK)
     
-    # register a new user
-    class RegisterView(APIView):
-        permission_classes = [AllowAny]
+# register a new user
+class RegisterView(APIView):
+    permission_classes = [AllowAny]
 
-        def post(self, request):
-            username = request.data.get('username')
-            password = request.data.get('password')
-            email = request.data.get('email')
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        email = request.data.get('email')
 
-            if User.objects.filter(username=username).exists():
-                return Response({'error': 'Username already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        if User.objects.filter(username=username).exists():
+            return Response({'error': 'Username already exists'}, status=status.HTTP_400_BAD_REQUEST)
 
-            user = User.objects.create_user(username=username, password=password, email=email)
-            token, created = Token.objects.get_or_create(user=user)
+        user = User.objects.create_user(username=username, password=password, email=email)
+        token, created = Token.objects.get_or_create(user=user)
 
-            return Response({
-                'message': 'User created successfully',
-                'token': token.key
-            }, status=status.HTTP_201_CREATED)
+        return Response({
+            'message': 'User created successfully',
+            'token': token.key
+        }, status=status.HTTP_201_CREATED)
