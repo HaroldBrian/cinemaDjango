@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
-        self.stdout.write("⏳ Waiting for MySQL database...")
+        self.stdout.write("Waiting for MySQL database...")
         db_ready = False
         while not db_ready:
             try:
@@ -18,6 +18,6 @@ class Command(BaseCommand):
                 conn.close()
                 db_ready = True
             except MySQLdb.OperationalError:
-                self.stdout.write("⛔ MySQL not available, waiting...")
+                self.stdout.write("MySQL not available, waiting...")
                 time.sleep(1)
-        self.stdout.write(self.style.SUCCESS("✅ MySQL is ready!"))
+        self.stdout.write(self.style.SUCCESS("MySQL is ready!"))
