@@ -1,4 +1,4 @@
-# Projet Cinema - Gestion des Auteurs et des films
+# Projet Cinema
 
 _Version_ : 1.0
 _Last update_ : 19 Mai 2025
