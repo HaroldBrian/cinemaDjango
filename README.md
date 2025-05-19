@@ -56,6 +56,7 @@ This project is a Django REST API for managing authors and movies, with interact
 | GET    | /api/movies/{id}/  | Get details of a movie         |
 | PUT    | /api/movies/{id}/  | Update a movie                 |
 | DELETE | /api/movies/{id}/  | Delete a movie                 |
+| POST   | /register/         | create a user                  |
 | POST   | /token/            | Obtain an authentication token |
 
 **Note:**  
@@ -91,7 +92,7 @@ Ce projet est une API Django REST permettant de gérer des auteurs et des films,
    python manage.py runserver
    ```
 
-5. **Accéder à l’api/v1 et à la documentation**
+5. **Accéder à l’api et à la documentation**
    - api/v1 : [http://localhost:8000/api/v1/](http://localhost:8000/api/v1/)
    - Swagger : [http://localhost:8000/swagger/](http://localhost:8000/swagger/)
    - Redoc : [http://localhost:8000/redoc/](http://localhost:8000/redoc/)
@@ -111,6 +112,7 @@ Ce projet est une API Django REST permettant de gérer des auteurs et des films,
 | GET     | /api/v1/movies/{id}/  | Détail d’un film                    |
 | PUT     | /api/v1/movies/{id}/  | Modifier un film                    |
 | DELETE  | /api/v1/movies/{id}/  | Supprimer un film                   |
+| POST    | /register/            | Ajouter un utilisateur              |
 | POST    | /token/               | Obtenir un token d’authentification |
 
 **Remarque :**  
