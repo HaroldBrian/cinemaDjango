@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.authtoken.views import obtain_auth_token
 
 # Ajoutez ces imports :
 from rest_framework import permissions
@@ -35,7 +34,6 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('', include('app.urls')),
-    path('token/', obtain_auth_token),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
