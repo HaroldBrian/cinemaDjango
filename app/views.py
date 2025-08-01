@@ -4,7 +4,7 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from app.models import Author, Movie
-from app.serializers import AuthorSerializer, MovieSerializer
+from app.serializers import AuthorSerializer, MovieSerializer, UpdateAuthorSerializer
 
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
@@ -21,6 +21,13 @@ class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    
+    def get_serializer_class(self):
+        if self.action == 'update' or self.action == 'partial_update':
+            return UpdateAuthorSerializer
+        elif self.action == 'create':
+            return AuthorSerializer
+        return super().get_serializer_class()
     
     def destroy(self, request, *args, **kwargs):
         author = self.get_object()

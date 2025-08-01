@@ -6,6 +6,13 @@ class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = ['id', 'name', 'email', 'birth_date']
+class UpdateAuthorSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(required=False)
+    email = serializers.EmailField(required=False)
+    birth_date = serializers.DateField(required=False)
+    class Meta:
+        model = Author
+        fields = ['name', 'email', 'birth_date']
         
 # Serializer for Movie model
 class MovieSerializer(serializers.ModelSerializer):
